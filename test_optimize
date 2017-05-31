@@ -1,0 +1,23 @@
+import optimize
+
+function rosenbrock(x)
+    return (1 - x[1])^2 + 100 * (x[2] - x[1]^2)^2
+end
+
+function drosenbrock(x)
+    return [-2 + 2 * x[1] - 400 * x[1] * (x[2] - x[1]^2);
+            200 * (x[2] - x[1]^2)]
+end
+
+function quadratic(x)
+    2 * x[1]^2 + x[2]^2 + 5*x[1]
+end
+
+function dquadratic(x)
+    [4 * x[1] + 5;
+     2 * x[2]]
+end
+
+x0 = [5.; 5.]
+# xmin, fmin, niter = optimize.gradient_descent(rosenbrock, optimize.estimate_gradient, x0)
+xmin, fmin, niter = optimize.gradient_descent(quadratic, optimize.estimate_gradient, x0)

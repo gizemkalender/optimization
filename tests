@@ -1,0 +1,26 @@
+# Test code for the MyModule
+import MyModule
+
+# Test cost function
+function f(x)
+  return x[1]^2 + x[2]^2
+end
+
+# Gradient of test cost function
+function df(x)
+  return [2*x[1]; 2*x[2]]
+end
+
+# Test curve for line search
+g(alpha) = alpha^2
+dg(alpha) = 2 * alpha
+
+# Test initial point
+x0 = [5; 5]
+
+# Test line search direction
+d = [-1; -1]
+
+# Test MyModule.line_search
+res = MyModule.line_search(g, dg)
+print(res)
